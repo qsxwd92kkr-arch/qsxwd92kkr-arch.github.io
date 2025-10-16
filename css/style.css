@@ -1,0 +1,227 @@
+/* Grundindstillinger */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../images/gallery/baggrund.png'); /* ← ændr filnavn og sti */
+    background-repeat: repeat;  /* gentager mønsteret */
+    background-size: auto;      /* bevarer original størrelse */
+    background-color: rgb(167, 157, 30); /* fallback-farve */
+    color: black;
+}
+
+
+
+
+/* Header (topbanner) */
+header {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Top linje med logo + tekst */
+.top-line {
+    display: flex;
+    flex-wrap: nowrap;            /* Vigtigt: tillader IKKE linjeskift */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.top-line img {
+    height: 40px;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.banner-text {
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;  /* Forhindrer at tekst hopper ned */
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+/* Hovedindhold */
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Responsivt design: små skærme */
+@media screen and (max-width: 600px) {
+    /* .top-line ændres IKKE mere – så den forbliver vandret */
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .banner-text {
+        font-size: 20px;
+    }
+}
+/* Galleri grid layout */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 15px;
+    padding: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+
+.lightbox-img {
+    max-width: 90vw;     /* max bredde: 90% af vinduets bredde */
+    max-height: 80vh;    /* max højde: 80% af vinduets højde */
+    width: auto;
+    height: auto;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+/* Pile til navigation */
+.lightbox .prev, .lightbox .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-size: 40px;
+    user-select: none;
+    transition: 0.3s;
+    transform: translateY(-50%);
+}
+
+.lightbox .prev:hover,
+.lightbox .next:hover {
+    color: #ccc;
+}
+
+.lightbox .prev {
+    left: 20px;
+}
+
+.lightbox .next {
+    right: 20px;
+}
+
+/* Billedtekst (nu over billedet) */
+.caption {
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.6); /* valgfrit: mørk baggrund */
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Lightbox-wrapper med tekst over billede */
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+    max-height: 90%;
+}
+.pdf-link {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #000000;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.pdf-link:hover {
+    background-color: #0d6d99;
+}
+.mobilepay-image {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.mobilepay-image img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
